@@ -1,0 +1,31 @@
+[project]
+name = "projet6-initiation-au-mlops-1-2"
+version = "0.1.0"
+description = "Utilisation de MLflow pour le tracking des expérimentations de modèles"
+authors = [
+    {name = "Symphor FONKOU SIGNE"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy (>=2.3.2,<3.0.0)",
+    "pandas (>=2.3.2,<3.0.0)",
+    "matplotlib (>=3.10.5,<4.0.0)",
+    "mlflow (>=3.3.1,<4.0.0)",
+    "ensemble (>=0.0.dev1,<0.1)",
+    "pyngrok (>=7.3.0,<8.0.0)",
+    "pipeline (>=0.1.0,<0.2.0)",
+    "seaborn (>=0.13.2,<0.14.0)",
+    "scikit-learn (>=1.7.1,<2.0.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.1"
+jupyter = "^1.1.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
