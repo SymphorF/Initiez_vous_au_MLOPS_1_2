@@ -1,0 +1,16 @@
+# Ignorer le dossier des données brutes
+
+data_brute/
+
+mlruns/
+
+# Ignorer certains types de fichiers lourds
+
+*.csv
+*.json
+*.zip
+*.pkl
+*.joblib
+*.txt
+*.yaml
+
