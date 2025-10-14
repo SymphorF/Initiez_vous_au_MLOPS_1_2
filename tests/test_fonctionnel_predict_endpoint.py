@@ -206,7 +206,7 @@ def test_predict_solvable_ou_non():
     #print("\n💡 Prédiction retournée :", result["prediction"])
 
 
-
+    '''
     response = client.post("/status_client_individuel", json=payload)
     
     # Vérification du code HTTP
@@ -218,5 +218,20 @@ def test_predict_solvable_ou_non():
     assert "prediction" in result
     assert "label" in result
     assert result["label"] in ["Solvable", "Insolvable"]
+
+    print("\n💡 Prédiction retournée :", result["label"])'''
+
+
+
+    response = client.post("/status_client_individuel", json=payload)
+    
+    # Vérification que l’endpoint est bien accessible
+    assert response.status_code == 200, f"Erreur : {response.status_code} au lieu de 200"
+    
+    result = response.json()
+
+    # Vérifie que la prédiction est bien présente
+    assert "prediction" in result, "La clé 'prediction' est manquante dans le retour"
+    assert result["label"] in ["Solvable", "Insolvable"], f"Label inattendu : {result['label']}"
 
     print("\n💡 Prédiction retournée :", result["label"])
