@@ -177,7 +177,7 @@ except Exception as e:
 #os.makedirs(LOG_DIR, exist_ok=True)
 #LOG_FILE = os.path.join(LOG_DIR, "api_logs.jsonl")
 
-
+'''
 if os.environ.get("GITHUB_ACTIONS") == "true":
     LOG_DIR = os.path.join(os.path.dirname(__file__), "logs")
 else:
@@ -185,6 +185,15 @@ else:
 
 os.makedirs(LOG_DIR, exist_ok=True)
 
+LOG_FILE = os.path.join(LOG_DIR, "api_logs.jsonl")
+'''
+
+LOG_DIR = (
+    os.path.join(os.path.dirname(__file__), "logs") 
+    if os.environ.get("GITHUB_ACTIONS") == "true" 
+    else os.environ.get("LOG_DIR", "./logs")
+)
+os.makedirs(LOG_DIR, exist_ok=True)
 LOG_FILE = os.path.join(LOG_DIR, "api_logs.jsonl")
 
 # compteur global (auto-incrément)
