@@ -195,34 +195,6 @@ def test_predict_solvable_ou_non():
         "AMT_DRAWINGS_CURRENT_mean"                        : 1.0
     }
 
-    #response = client.post("/status_client_individuel", json=payload)
-    
-    #assert response.status_code == 200
-    #result = response.json()
-
-    #assert "prediction" in result
-    #assert result["prediction"] in ["Insolvable", "Solvable"]
-
-    #print("\n💡 Prédiction retournée :", result["prediction"])
-
-
-    '''
-    response = client.post("/status_client_individuel", json=payload)
-    
-    # Vérification du code HTTP
-    assert response.status_code == 200
-
-    result = response.json()
-
-    # Vérification que la réponse contient prediction et label
-    assert "prediction" in result
-    assert "label" in result
-    assert result["label"] in ["Solvable", "Insolvable"]
-
-    print("\n💡 Prédiction retournée :", result["label"])'''
-
-
-
     response = client.post("/status_client_individuel", json=payload)
     
     # Vérification que l’endpoint est bien accessible

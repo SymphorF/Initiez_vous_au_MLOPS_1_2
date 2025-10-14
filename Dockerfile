@@ -1,28 +1,47 @@
-# Utilisation d’une image Python légère
+# ================================
+# 1️⃣ Image de base
+# ================================
 FROM python:3.12-slim
 
-# Définir le dossier de travail
+# ================================
+# 2️⃣ Définir le répertoire de travail
+# ================================
 WORKDIR /app
 
-# Installer Poetry
+# ================================
+# 3️⃣ Installer Poetry
+# ================================
 RUN pip install --no-cache-dir poetry
 
-# Empêcher Poetry de créer un venv dans Docker
+# Désactiver la création d'environnements virtuels (on reste dans le global)
 RUN poetry config virtualenvs.create false
 
-# Copier fichiers de dépendances
+# ================================
+# 4️⃣ Copier les fichiers de dépendances
+# ================================
 COPY pyproject.toml poetry.lock* ./
 
-# Installer les dépendances (sans dev)
+# ================================
+# 5️⃣ Installer les dépendances sans les dev
+# ================================
 RUN poetry install --no-root --without dev
 
-# Créer le dossier de logs
+# ================================
+# 6️⃣ Créer le dossier de logs (utilisé dans ton code)
+# ================================
 RUN mkdir -p /app/logs
 
-# Copier le projet
+# ================================
+# 7️⃣ Copier le code du projet
+# ================================
 COPY . .
 
+# ================================
+# 8️⃣ Exposer le port FastAPI
+# ================================
 EXPOSE 8000
 
-# Lancer FastAPI
+# ================================
+# 9️⃣ Commande de lancement
+# ================================
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

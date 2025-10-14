@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  fastapi-app:
+    build: .
+    container_name: fastapi-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs   # monte les logs pour les voir sur le PC
+    environment:
+      - LOG_DIR=/app/logs   # redondance utile si on veut forcer
+    restart: always

@@ -86,11 +86,32 @@ docker run -d -p 8000:8000 --name fastapi-app fastapi-app
 
 Accéder à l’API via le navigateur (FastAPI fournit automatiquement la documentation interactive Swagger) :
 
-http://localhost:8000/docs
+http://localhost:8000/docs (bien sûre en utilisant le post correct pour visualiser, dans ce exple c'est le port 8000)
 
 
 💡 Astuce :
 
-Pour inspecter les logs du conteneur pour voir ce qui se passe :
+*Pour inspecter les logs du conteneur pour voir ce qui se passe :*
 
 docker logs -f fastapi-app
+
+*Pour visualiser les ports déjà utilisé par docker*
+
+docker ps
+
+*Pour arrêter un conteneur en particulier*
+
+docker stop nom_du_conteneur (exp: docker stop eager_jemison)
+docker rm nom_du_conteneur (exp: docker rm eager_jemison)
+
+*Pour arrêter tous les conteneurs en même temps:*
+
+docker stop $(docker ps -q)
+
+*Pour supprimer tous les conteneurs (libérer les ports):*
+
+docker rm $(docker ps -aq)
+
+*Pour nettoyer tout le système Docker (arrêter tous les conteneurs, toutes les images non utilisées...):*
+
+docker system prune -a
