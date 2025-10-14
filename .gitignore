@@ -1,0 +1,17 @@
+# Ignorer le dossier des données brutes
+
+data_brute/
+
+mlruns/
+
+modeles/random_forest_pipeline.joblib
+
+# Ignorer certains types de fichiers lourds
+
+*.csv
+*.json
+*.zip
+*.pkl
+*.txt
+*.yaml
+
