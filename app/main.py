@@ -185,7 +185,7 @@ else:
 
 os.makedirs(LOG_DIR, exist_ok=True)
 
-
+LOG_FILE = os.path.join(LOG_DIR, "api_logs.jsonl")
 
 # compteur global (auto-incrément)
 client_counter = 1
