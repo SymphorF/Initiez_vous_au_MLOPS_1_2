@@ -173,10 +173,18 @@ except Exception as e:
 #os.makedirs(LOG_DIR, exist_ok=True)
 
 # Dossier de logs dans le conteneur Docker
-LOG_DIR = "/app/logs"
+#LOG_DIR = "/app/logs"
+#os.makedirs(LOG_DIR, exist_ok=True)
+#LOG_FILE = os.path.join(LOG_DIR, "api_logs.jsonl")
+
+
+if os.environ.get("GITHUB_ACTIONS") == "true":
+    LOG_DIR = os.path.join(os.path.dirname(__file__), "logs")
+else:
+    LOG_DIR = "/app/logs"
+
 os.makedirs(LOG_DIR, exist_ok=True)
 
-LOG_FILE = os.path.join(LOG_DIR, "api_logs.jsonl")
 
 
 # compteur global (auto-incrément)
