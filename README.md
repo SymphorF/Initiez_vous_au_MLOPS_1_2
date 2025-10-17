@@ -59,37 +59,28 @@ poetry install
 poetry shell  
 
 
-4. Lancer MLflow en local :
-
-bash 
-
-poetry shell
-
-mlflow ui
-
-http://127.0.0.1:5000
-
-
-5. Docker
+4. Docker
 
 Voici le workflow résumé :
 
-Builder l’image Docker (crée l’image avec l'application et ses dépendances) :
+- Builder l’image Docker (crée l’image avec l'application et ses dépendances) :
 
 docker build -t fastapi-app .
 
+- Lancer un conteneur à partir de l’image (exécuter l'app en arrière-plan, mapper le port 8000 du conteneur vers le PC) :
 
-Lancer un conteneur à partir de l’image (exécuter l'app en arrière-plan, mapper le port 8000 du conteneur vers le PC) :
+docker run -d -p 8000:8000 --name fastapi-app -v ./app/logs:/app/logs fastapi-app
 
-docker run -d -p 8000:8000 --name fastapi-app fastapi-app
-
-
-Accéder à l’API via le navigateur (FastAPI fournit automatiquement la documentation interactive Swagger) :
+- Accéder à l’API via le navigateur (FastAPI fournit automatiquement la documentation interactive Swagger) :
 
 http://localhost:8000/docs (bien sûre en utilisant le post correct pour visualiser, dans ce exple c'est le port 8000)
 
+- Pour afficher les logs 
 
-💡 Astuce :
+docker cp fastapi-app:/app/logs/api_logs.jsonl ./api_logs.jsonl
+
+
+**💡 Astuce :**
 
 *Pour inspecter les logs du conteneur pour voir ce qui se passe :*
 
@@ -115,3 +106,66 @@ docker rm $(docker ps -aq)
 *Pour nettoyer tout le système Docker (arrêter tous les conteneurs, toutes les images non utilisées...):*
 
 docker system prune -a
+
+*Pour visualiser l'ensemble des images créées sur docker*
+
+docker images
+
+*Pour supprimer une image*
+
+docker rmi id_image (exp docker rmi c111c74738e7)
+
+Pensez à supprimer d'abord le conteneur utilisant cette image avant de la supprimer (voir méthode ci-dessus)
+
+5. cProfile 
+
+“Profiling des performances avec cProfile” 👇
+
+*Afin d’analyser les performances de l’API et d’identifier les points de ralentissement (temps d’exécution du modèle, du chargement des données, etc.), un profilage est effectué à l’aide du module Python cProfile. à partir du fichier **profile_api.py** à la racine du projet*
+
+- Exécuter le profiling en local
+
+ bash 
+
+ à la racine du projet : 
+
+ python profile_api.py
+
+ 💡 Cela lancera plusieurs requêtes internes à l’API et affichera dans le terminal la liste des fonctions les plus lentes, avec leur temps d’exécution cumulé et moyen. Et la ligne de code stats.dump_stats("profiling_results.prof") exportera les résultat dans un fichier à la racine appelé "profiling_results.prof"
+
+- (Optionnel) Exécuter le profiling dans Docker
+ 
+ bash 
+
+ *à la racine du projet :*
+
+*BUILDEZ*
+
+ docker compose build
+ 
+ *Une fois ton conteneur lancé, entre dedans :*
+
+ docker ps
+
+ docker exec -it fastapi-app bash
+
+ python profile_api.py
+
+ *pour sortir:*
+ 
+ exit
+ 
+
+- Exploiter les résultats 
+
+ Installer et lancer Snakeviz :
+
+ pip install snakeviz
+
+ bash 
+
+ cProfile   
+
+ snakeviz profiling_results.prof
+
+
