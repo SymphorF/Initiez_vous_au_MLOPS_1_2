@@ -6,7 +6,7 @@ Ce projet utilise Python avec Poetry pour la gestion d'environnement virtuel, et
 ## 📁 Structure du projet
 
 ``` 
-Projet-4/
+Projet-8/
 ├── data_brut/ # Données brutes
 ├── data/ # Données aggrégées
 ├── .gitignore # Dossiers à ignorer par Git lors des pushs
@@ -131,7 +131,7 @@ Pensez à supprimer d'abord le conteneur utilisant cette image avant de la suppr
 
  python profile_api.py
 
- 💡 Cela lancera plusieurs requêtes internes à l’API et affichera dans le terminal la liste des fonctions les plus lentes, avec leur temps d’exécution cumulé et moyen. Et la ligne de code stats.dump_stats("profiling_results.prof") exportera les résultat dans un fichier à la racine appelé "profiling_results.prof"
+ 💡 Cela lancera plusieurs requêtes internes à l’API et affichera dans le terminal la liste des fonctions les plus lentes, avec leur temps d’exécution cumulé et moyen. Et la ligne de code stats.dump_stats("profiling_results.prof") exportera les résultat dans un fichier à la racine appelé "profiling_results.prof" (pour les premiiers résultats) et "profiling_results_optimized.prof" (pour les résultats avec temps de latences optimisés)
 
 - (Optionnel) Exécuter le profiling dans Docker
  
@@ -166,6 +166,43 @@ Pensez à supprimer d'abord le conteneur utilisant cette image avant de la suppr
 
  cProfile   
 
- snakeviz profiling_results.prof
+ snakeviz profiling_results.prof *(pour les premiers résultats)*
 
+ snakeviz profiling_results_optimized.prof *(pour les résultats optimisés)*
+
+6. Hugging Face
+
+- Visualisez et tester l'app sur Hugging face
+
+ Rendez-vous sur le lien https://huggingface.co/spaces/Symphor/HUGGING_FACE_INITIEZ_VOUS_AU_MLOPS_1_2
+
+ Lorsque l'application est prête, cherchez un fichier en .csv client respectant le format des colonnes et introduisez dans l'app (voir le fichier nommé 'fichier_test.csv' dans le repertoire 'fichier_test_clients')
+ 
+ Lancez l'app en cliquant sur Submit sur l'interface HuggingFace pour visualiser les résultats
+
+
+- Si vous souhaitez clonner le dépot HuggingFace et le déployer 
+ 
+ Sur HuggingFace, cliquez sur NewSpace
+
+ Remplissez les informations requises en vous assurant d'avoir le même nom de projet que celui du dossier (vous pouvez le renommer)
+
+ Clonnez le projet
+
+ bash  
+
+ git clone https://huggingface.co/spaces/Symphor/HUGGING_FACE_INITIEZ_VOUS_AU_MLOPS_1_2
+
+
+ cd HUGGING_FACE_INITIEZ_VOUS_AU_MLOPS_1_2 (si vous gardez le même nom)
+
+ Utiliser app.py comme fichier principal.
+
+ git add app.py
+
+ git commit -m "Add application file"
+
+ git push
+
+ L'app est déployée sur votre space
 
