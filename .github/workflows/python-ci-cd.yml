@@ -2,9 +2,9 @@ name: Python CI
 
 on:
   push:
-    branches: [ "main_doker" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main_docker" ]
+    branches: [ "main" ]
 
 jobs:
   build:

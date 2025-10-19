@@ -15,6 +15,7 @@ Projet-8/
 ├── drifts/                                  # Détection de dérive de données avec Evidently pour vérifier la cohérence du modèle en production
 ├── modeles/                                 # Modèles entraînés et sauvegardés (fichiers .joblib, .pkl, etc.)
 ├── notebook/                                # Notebooks Jupyter pour exploration, entraînement, et analyse
+├── presentation/                            # Dossier de présentation du projet (PowerPoint, PDF, etc.)
 ├── tests/                                   # Tests unitaires et fonctionnels pour assurer la fiabilité du code
 ├── .gitignore                               # Liste des fichiers et dossiers à ignorer par Git
 ├── Dockerfile                               # Fichier de configuration Docker pour créer l’image du projet
@@ -24,8 +25,7 @@ Projet-8/
 ├── profile_api_optimized.py                 # Version optimisée du script de profilage
 ├── pyproject.toml                           # Fichier principal de configuration du projet et des dépendances (Poetry)
 ├── lien.txt                                 # Liens publics vers Hugging Face et GitHub
-├── xgboost_features90.joblib                # Modèle XGBoost utilisé pour cette expérience
-└── Presentation_PP/                         # Dossier de présentation du projet (PowerPoint, PDF, etc.)
+└── xgboost_features90.joblib                # Modèle XGBoost utilisé pour cette expérience
 ``` 
 
 🚀 **Présentation du projet**
