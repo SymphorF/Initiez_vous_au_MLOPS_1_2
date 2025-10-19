@@ -1,0 +1,11 @@
+gradio
+pandas
+scikit-learn
+imbalanced-learn
+joblib
+fastapi
+uvicorn
+pandas
+scikit-learn
+joblib
+xgboost
