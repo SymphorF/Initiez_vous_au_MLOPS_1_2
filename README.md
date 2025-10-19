@@ -257,5 +257,4 @@ Pensez à supprimer d'abord le conteneur utilisant cette image avant de la suppr
 
  git push
 
- L'app est déployée sur votre space
-
+ L'app est déployée sur votre space.
