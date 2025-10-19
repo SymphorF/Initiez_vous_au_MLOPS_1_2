@@ -12,6 +12,5 @@ modeles/random_forest_pipeline.joblib
 *.json
 *.zip
 *.pkl
-*.txt
 *.yaml
 
