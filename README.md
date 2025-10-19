@@ -1,5 +1,6 @@
-# Initiez_vous_au_MLOPS_1_2
-Utilisez MLFlow pour tracker les expérimentations
+# Initiez_vous_au_MLOPS_2_2
+
+L'objectif de ce travail est de déployer en production le modèle de scoring développé précédemment en créant une API conteneurisée avec Docker pour le département "Crédit Express". Il s'agit également de mettre en place un système de monitoring via un dashboard pour suivre les performances du modèle en environnement de production.
 
 Ce projet utilise Python avec Poetry pour la gestion d'environnement virtuel, et JupyterLab pour l'exploration des données.
 
@@ -7,18 +8,24 @@ Ce projet utilise Python avec Poetry pour la gestion d'environnement virtuel, et
 
 ``` 
 Projet-8/
-├── data_brut/ # Données brutes
-├── data/ # Données aggrégées
-├── .gitignore # Dossiers à ignorer par Git lors des pushs
-├── images/ # Images matrices de confusions et score kaggle
-├── mlruns # Base de données locale de mlflow
-├── sample # Echantillons de modèles pour tests Kaggle
-├── Fonkou_Symphor_1_notebook_120825.ipynb  # Notebooks Jupyter
-├── pyproject.toml # Dépendances du projet
-├── poetry.lock # Verrouillage des versions (auto-généré)
-├── lien.txt # Lien publique de lancement mlflow
-├── Presentation PP
-└── README.md # Ce fichier
+├── .github/workflows/                       # Fichiers YAML définissant les workflows CI/CD de GitHub Actions
+├── HUGGING_FACE_INITIEZ_VOUS_AU_MLOPS_1_2/  # Configuration et déploiement du modèle sur Hugging Face
+├── app/                                     # Application principale (API, interface ou script Hugging Face)
+├── cProfile/                                # Résultats et rapports du profilage des performances de l’API
+├── drifts/                                  # Détection de dérive de données avec Evidently pour vérifier la cohérence du modèle en production
+├── modeles/                                 # Modèles entraînés et sauvegardés (fichiers .joblib, .pkl, etc.)
+├── notebook/                                # Notebooks Jupyter pour exploration, entraînement, et analyse
+├── tests/                                   # Tests unitaires et fonctionnels pour assurer la fiabilité du code
+├── .gitignore                               # Liste des fichiers et dossiers à ignorer par Git
+├── Dockerfile                               # Fichier de configuration Docker pour créer l’image du projet
+├── docker-compose.yml                       # Orchestration multi-conteneurs (API, base de données, monitoring, etc.)
+├── poetry.lock                              # Verrouillage des versions des dépendances (généré automatiquement par Poetry)
+├── profile_api.py                           # Script de profilage des performances de l’API
+├── profile_api_optimized.py                 # Version optimisée du script de profilage
+├── pyproject.toml                           # Fichier principal de configuration du projet et des dépendances (Poetry)
+├── lien.txt                                 # Liens publics vers Hugging Face et GitHub
+├── xgboost_features90.joblib                # Modèle XGBoost utilisé pour cette expérience
+└── Presentation_PP/                         # Dossier de présentation du projet (PowerPoint, PDF, etc.)
 ``` 
 
 🚀 **Présentation du projet**
@@ -117,11 +124,53 @@ docker rmi id_image (exp docker rmi c111c74738e7)
 
 Pensez à supprimer d'abord le conteneur utilisant cette image avant de la supprimer (voir méthode ci-dessus)
 
-5. cProfile 
+
+5. FastAPI
+
+- L'API peut être lancé en local ou depuis docker
+
+  * En local : 
+
+    bash
+
+    /app
+
+    fastapi dev main.py
+
+  * Depuis docker (voir l'étape 4) 
+
+- Pour tester l'application FastAPI
+   
+  * Sur l'interface fastapi: 
+
+    Cliquer sur "Try it out"
+
+    Mettez les valeurs correspondantes des features (par défaut 0 partout) 
+
+    Vous pouvez aussi recupérer les données de productions directement sur le ficher csv recupéré précédement, en faisant un copier-coller des features et une colonne au choix des valeurs de feature pour les introduire selon le format par défaut dans l'app FastAPI.
+
+    Ensuite vérifiez le résultat sur la route en dessous "Client solvable" (correspondant à la valeur 0) ou "Client insolvable" (correspondant à la valeur 1).
+
+    Vous pouvez tester plusieurs requettes.
+  
+  * Les requettes sont enregistrées de façon instantanée dans le fichier "api_logs.jsonl" situé dans le repertoire logs/
+
+  * Pour remettre l'ensemble des logs enregistrées cliquez sur "DELETE" sur l'interface FastAPI.
+
+6. Drifts
+
+- Les données de production de ce test de drifts sont fictives, elles sont donc créées à partir de nos données brutes (car n'ayant pas des données réelles de production), voir données créées dans le notebook "Extract_data_drifts.ipynb" ces données  de production sont donc utilisées pour comparer au données de test pour vérifier le drift.
+
+- Pour créer un rapport de drift en format html à partir de nos données, lancer le notebook "drift_test_evidently.ipynb"
+
+- Enfin, à partir de l'étape II du notebook "Extract_data_drifts.ipynb", on prépare les mêmes données de production pour qu'elles correspondent au format demandé par l'application FastAPI, l'objectif étant de tester l'enregistrement des endpoints dans le log "api_log.jsonl", pour se faire, voir l'étape suivante
+
+     
+7. cProfile 
 
 “Profiling des performances avec cProfile” 👇
 
-*Afin d’analyser les performances de l’API et d’identifier les points de ralentissement (temps d’exécution du modèle, du chargement des données, etc.), un profilage est effectué à l’aide du module Python cProfile. à partir du fichier **profile_api.py** à la racine du projet*
+*Afin d’analyser les performances de l’API et d’identifier les points de ralentissement (temps d’exécution du modèle, du chargement des données, etc.), un profilage est effectué à l’aide du module Python cProfile à partir du fichier **profile_api.py** à la racine du projet*
 
 - Exécuter le profiling en local
 
@@ -129,32 +178,12 @@ Pensez à supprimer d'abord le conteneur utilisant cette image avant de la suppr
 
  à la racine du projet : 
 
- python profile_api.py
+ python profile_api.py *(Pour la version standard)*
 
- 💡 Cela lancera plusieurs requêtes internes à l’API et affichera dans le terminal la liste des fonctions les plus lentes, avec leur temps d’exécution cumulé et moyen. Et la ligne de code stats.dump_stats("profiling_results.prof") exportera les résultat dans un fichier à la racine appelé "profiling_results.prof" (pour les premiiers résultats) et "profiling_results_optimized.prof" (pour les résultats avec temps de latences optimisés)
+ python profile_api_optimized.py *(Pour la version avec latence optimisée)*
 
-- (Optionnel) Exécuter le profiling dans Docker
- 
- bash 
+ 💡 Cela lancera plusieurs requêtes internes à l’API et affichera dans le terminal la liste des fonctions les plus lentes, avec leur temps d’exécution cumulé et moyen. Et la ligne de code stats.dump_stats() exportera les résultat dans un fichier à la racine appelé **"profiling_results.prof"** (pour les premiiers résultats) et **"profiling_results_optimized.prof"** (pour les résultats avec temps de latences optimisés) 
 
- *à la racine du projet :*
-
-*BUILDEZ*
-
- docker compose build
- 
- *Une fois ton conteneur lancé, entre dedans :*
-
- docker ps
-
- docker exec -it fastapi-app bash
-
- python profile_api.py
-
- *pour sortir:*
- 
- exit
- 
 
 - Exploiter les résultats 
 
@@ -170,7 +199,31 @@ Pensez à supprimer d'abord le conteneur utilisant cette image avant de la suppr
 
  snakeviz profiling_results_optimized.prof *(pour les résultats optimisés)*
 
-6. Hugging Face
+
+ - (Optionnel) Exécuter le profiling dans Docker
+ 
+ bash 
+
+ *à la racine du projet :*
+
+ *BUILDEZ*
+
+ docker compose build
+ 
+ *Une fois ton conteneur lancé, entre dedans :*
+
+ docker ps
+
+ docker exec -it fastapi-app bash
+
+ python profile_api.py
+
+ *pour sortir:*
+ 
+ exit
+
+
+8. Hugging Face
 
 - Visualisez et tester l'app sur Hugging face
 
