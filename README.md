@@ -19,6 +19,7 @@ Projet-8/
 ├── tests/                                   # Tests unitaires et fonctionnels pour assurer la fiabilité du code
 ├── .gitignore                               # Liste des fichiers et dossiers à ignorer par Git
 ├── Dockerfile                               # Fichier de configuration Docker pour créer l’image du projet
+├── README.md                                # Ce fichier
 ├── docker-compose.yml                       # Orchestration multi-conteneurs (API, base de données, monitoring, etc.)
 ├── poetry.lock                              # Verrouillage des versions des dépendances (généré automatiquement par Poetry)
 ├── profile_api.py                           # Script de profilage des performances de l’API
