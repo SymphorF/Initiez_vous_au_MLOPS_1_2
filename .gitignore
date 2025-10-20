@@ -14,3 +14,7 @@ modeles/random_forest_pipeline.joblib
 *.pkl
 *.yaml
 
+# Exceptions : ne pas ignorer ces fichiers précis
+
+!fichier_test.csv
+!client_unique_test.json

@@ -1,7 +1,7 @@
 # ================================
 # 1️⃣ Image de base
 # ================================
-FROM python:3.12-slim
+FROM python:3.12-slim 
 
 # ================================
 # 2️⃣ Définir le répertoire de travail
