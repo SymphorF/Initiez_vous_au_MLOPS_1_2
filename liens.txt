@@ -1,7 +1,10 @@
 GitHub :
-
 	https://github.com/SymphorF/Initiez_vous_au_MLOPS_1_2
 
 HuggigFace :
-
 	https://huggingface.co/spaces/Symphor/HUGGING_FACE_INITIEZ_VOUS_AU_MLOPS_1_2
+
+
+Fichier client test HuggingFace :
+	https://drive.google.com/file/d/1nb_4ptLH1bAPC6zOJjMoPslJLjt4_aD5/view?usp=sharing
+	
