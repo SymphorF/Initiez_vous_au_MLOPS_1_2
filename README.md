@@ -4,6 +4,8 @@ L'objectif de ce travail est de déployer en production le modèle de scoring d�
 
 Ce projet utilise Python avec Poetry pour la gestion d'environnement virtuel, et JupyterLab pour l'exploration des données.
 
+Effectué 
+
 ## 📁 Structure du projet
 
 ``` 
