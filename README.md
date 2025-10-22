@@ -230,7 +230,7 @@ Pensez à supprimer d'abord le conteneur utilisant cette image avant de la suppr
 
  Rendez-vous sur le lien https://huggingface.co/spaces/Symphor/HUGGING_FACE_INITIEZ_VOUS_AU_MLOPS_1_2
 
- Lorsque l'application est prête, cherchez un fichier en .csv client respectant le format des colonnes et introduisez dans l'app (voir le fichier nommé 'fichier_test.csv' dans le repertoire 'fichier_test_clients')
+ Lorsque l'application est prête, cherchez un fichier en .csv client respectant le format des colonnes et introduisez dans l'app (voir le fichier nommé 'fichier_test.csv' dont le lien de téléchargement se trouve dans le fichier "liens" à la racine du projet)
  
  Lancez l'app en cliquant sur Submit sur l'interface HuggingFace pour visualiser les résultats
 
