@@ -1,29 +1,29 @@
 === Résumé du Profiling (Top 20) ===
-         730669 function calls (709888 primitive calls) in 1.515 seconds
+         730642 function calls (709869 primitive calls) in 2.187 seconds
 
    Ordered by: internal time
    List reduced from 1421 to 20 due to restriction <20>
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-118129/117043    0.065    0.000    0.103    0.000 {built-in method builtins.isinstance}
-     1090    0.054    0.000    0.055    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\_config\config.py:674(_translate_key)
-     2970    0.040    0.000    0.110    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\construction.py:519(sanitize_array)
-       10    0.033    0.003    0.837    0.084 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\xgboost\core.py:2540(inplace_predict)
-     8560    0.030    0.000    0.048    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\generic.py:6206(__setattr__)
-     1870    0.026    0.000    0.034    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\internals\managers.py:991(iget)
-     1870    0.024    0.000    0.366    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\base.py:541(to_numpy)
-     1080    0.023    0.000    0.229    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\series.py:371(__init__)
-32215/23025    0.021    0.000    0.028    0.000 {built-in method builtins.len}
-     1910    0.019    0.000    0.035    0.000 {pandas._libs.lib.maybe_convert_objects}
-15680/8080    0.019    0.000    0.026    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py:334(_iterencode_dict)
-       10    0.018    0.002    0.057    0.006 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\internals\managers.py:2137(_form_blocks)
-       10    0.018    0.002    0.683    0.068 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\xgboost\data.py:539(pandas_transform_data)
-     2760    0.018    0.000    0.055    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\numpy\core\_dtype.py:346(_name_get)
-     2960    0.017    0.000    0.022    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\generic.py:274(__init__)
-     1870    0.017    0.000    0.214    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\frame.py:3853(__getitem__)
-     1870    0.017    0.000    0.024    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\generic.py:6147(__finalize__)
-       10    0.016    0.002    0.084    0.008 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\xgboost\data.py:375(pandas_feature_info)
-    33240    0.016    0.000    0.020    0.000 {built-in method builtins.getattr}
-     3800    0.014    0.000    0.032    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\numpy\core\numerictypes.py:357(issubdtype)
+118128/117042    0.085    0.000    0.137    0.000 {built-in method builtins.isinstance}
+     1090    0.084    0.000    0.085    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\_config\config.py:674(_translate_key)
+       10    0.061    0.006    1.281    0.128 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\xgboost\core.py:2540(inplace_predict)
+     2970    0.052    0.000    0.140    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\construction.py:519(sanitize_array)
+     8560    0.042    0.000    0.071    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\generic.py:6206(__setattr__)
+     1870    0.039    0.000    0.053    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\internals\managers.py:991(iget)
+     1870    0.037    0.000    0.551    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\base.py:541(to_numpy)
+32215/23025    0.035    0.000    0.044    0.000 {built-in method builtins.len}
+     2960    0.031    0.000    0.038    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\generic.py:274(__init__)
+     1080    0.031    0.000    0.331    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\series.py:371(__init__)
+       10    0.028    0.003    0.124    0.012 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\xgboost\data.py:375(pandas_feature_info)
+     5930    0.028    0.000    0.028    0.000 {built-in method numpy.asarray}
+       10    0.027    0.003    1.042    0.104 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\xgboost\data.py:539(pandas_transform_data)
+     1870    0.027    0.000    0.335    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\frame.py:3853(__getitem__)
+     1870    0.026    0.000    0.035    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\generic.py:6147(__finalize__)
+     1910    0.025    0.000    0.044    0.000 {pandas._libs.lib.maybe_convert_objects}
+     2760    0.024    0.000    0.075    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\numpy\core\_dtype.py:346(_name_get)
+       10    0.024    0.002    0.076    0.008 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\internals\managers.py:2137(_form_blocks)
+     4800    0.023    0.000    0.027    0.000 C:\Users\PC\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\internals\managers.py:1949(dtype)
+    33238    0.022    0.000    0.030    0.000 {built-in method builtins.getattr}
 
 
