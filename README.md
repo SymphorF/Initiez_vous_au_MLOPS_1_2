@@ -160,6 +160,8 @@ Pensez à supprimer d'abord le conteneur utilisant cette image avant de la suppr
 
 6. Drifts
 
+ Objectif : le drift ou dérive des données à pour objectif de détecter si le comportement des données réelles changent avec le temps
+
 - Les données de production de ce test de drifts sont fictives, elles sont donc créées à partir de nos données brutes (car n'ayant pas des données réelles de production), voir données créées dans le notebook "Extract_data_drifts.ipynb" ces données  de production sont donc utilisées pour comparer au données de test pour vérifier le drift.
 
 - Pour créer un rapport de drift en format html à partir de nos données, lancer le notebook "drift_test_evidently.ipynb"
