@@ -2,8 +2,6 @@
 
 L'objectif de ce travail est de déployer en production le modèle de scoring développé précédemment en créant une API conteneurisée avec Docker pour le département "Crédit Express". Il s'agit également de mettre en place un système de monitoring via un dashboard pour suivre les performances du modèle en environnement de production.
 
-Effectué.
-
 Ce projet utilise Python avec Poetry pour la gestion d'environnement virtuel, et JupyterLab pour l'exploration des données.
 
 ## 📁 Structure du projet
